@@ -1,0 +1,44 @@
+{
+  "transactions": [
+    {
+      "id": 1,
+      "status": "pending",
+      "title": "AWS services",
+      "description": "Monthly payment for AWS service",
+      "type": "cash",
+      "date": "1/11/2020"
+    },
+    {
+      "id": 2,
+      "status": "pending",
+      "title": "Ink purchase",
+      "description": "Purchase of printer ink for deskjet printer",
+      "type": "credit",
+      "date": "1/11/2020"
+    },
+    {
+      "id": 3,
+      "status": "sucessful",
+      "title": "School bus maintainance",
+      "description": "Charge for monthly school bus maintainance",
+      "type": "cash",
+      "date": "2/11/2020" 
+    },
+    {
+      "id": 4,
+      "status": "pending",
+      "title": "Electricity payment",
+      "description": "Payment for power supply for the month",
+      "type": "credit",
+      "date": "2/11/2020"
+    },
+    {
+      "id": 5,
+      "status": "sucessful",
+      "title": "Hardware purchate",
+      "description": "Purchase of damaged hardware computer peripherals",
+      "type": "credit",
+      "date": "3/11/2020"
+    }
+  ]
+}
