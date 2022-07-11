@@ -34,9 +34,26 @@ div.data-daily{
   display: grid;
   gap: 2em;
 }
+
 div.data-daily__content{
   /* height: 100px; */
   display: grid;
   grid-template-columns: 100px 1fr;
   gap: 2em;
+}
+
+div.data-daily__content > div.data-daily__content-id{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+div.data-daily__content > div.data-daily__content-data > * > span{
+  color: grey;
+}
+
+div.data-daily__content > div.data-daily__content-data > *{
+  display: grid;
+  grid-template-columns: 140px 1fr;
 }

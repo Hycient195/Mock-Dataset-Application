@@ -6,7 +6,9 @@
       "title": "AWS services",
       "description": "Monthly payment for AWS service",
       "type": "cash",
-      "date": "1/11/2020"
+      "amount": 1000,
+      "currency": "USD",
+      "date": "1/07/2022"
     },
     {
       "id": 2,
@@ -14,31 +16,190 @@
       "title": "Ink purchase",
       "description": "Purchase of printer ink for deskjet printer",
       "type": "credit",
-      "date": "1/11/2020"
+      "amount": 50000,
+      "currency": "NGN",
+      "date": "1/07/2022"
     },
     {
       "id": 3,
-      "status": "sucessful",
-      "title": "School bus maintainance",
-      "description": "Charge for monthly school bus maintainance",
+      "status": "failed",
+      "title": "Air condition servicing",
+      "description": "Payment for maintainance of air condition and refrigeration systems",
       "type": "cash",
-      "date": "2/11/2020" 
+      "amount": 40000,
+      "currency": "NGN",
+      "date": "1/07/2022"
     },
     {
       "id": 4,
-      "status": "pending",
-      "title": "Electricity payment",
-      "description": "Payment for power supply for the month",
-      "type": "credit",
-      "date": "2/11/2020"
+      "status": "sucessful",
+      "title": "Domestic expenses",
+      "description": "Purchase for domestic tools",
+      "type": "debit",
+      "amount": 10000,
+      "currency": "NGN",
+      "date": "1/07/2022"
     },
     {
       "id": 5,
       "status": "sucessful",
-      "title": "Hardware purchate",
-      "description": "Purchase of damaged hardware computer peripherals",
+      "title": "School bus maintainance",
+      "description": "Charge for monthly school bus maintainance",
+      "type": "debit",
+      "amount": 5000,
+      "currency": "NGN",
+      "date": "2/07/2022" 
+    },
+    {
+      "id": 6,
+      "status": "pending",
+      "title": "Electricity payment",
+      "description": "Payment for power supply for the month",
+      "type": "debit",
+      "amount": 100000,
+      "currency": "NGN",
+      "date": "2/07/2022"
+    },
+    {
+      "id": 7,
+      "status": "sucessful",
+      "title": "Hardware sales",
+      "description": "Sale of used hardware peripherals",
       "type": "credit",
-      "date": "3/11/2020"
+      "amount": 110000,
+      "currency": "NGN",
+      "date": "2/07/2022"
+    },
+    {
+      "id": 8,
+      "status": "sucessful",
+      "title": "Shares sale",
+      "description": "Sale of 5 percent shares",
+      "type": "credit",
+      "amount": 3500,
+      "currency": "USD",
+      "date": "2/07/2022"
+    },
+    {
+      "id": 9,
+      "status": "failed",
+      "title": "Payment for office chairs",
+      "description": "Payment for new office chairs for meeting room",
+      "type": "debit",
+      "amount": 1000,
+      "currency": "USD",
+      "date": "3/07/2022"
+    },
+    {
+      "id": 10,
+      "status": "pending",
+      "title": "Offered light loan",
+      "description": "Offered loan to Mac Brothers for infrastructure setup",
+      "type": "debit",
+      "amount": 2000000,
+      "currency": "NGN",
+      "date": "3/07/2022"
+    },
+    {
+      "id": 11,
+      "status": "sucessful",
+      "title": "Received payment for goods delivered",
+      "description": "Received payment for goods delivered to partners",
+      "type": "credit",
+      "amount": 200000,
+      "currency": "NGN",
+      "date": "3/07/2022"
+    },
+    {
+      "id": 12,
+      "status": "failed",
+      "title": "Received payment for loans due",
+      "description": "Received payment for due loans lent to partners",
+      "type": "credit",
+      "amount": 170000,
+      "currency": "",
+      "date": "3/07/2022"
+    },
+    {
+      "id": 13,
+      "status": "pending",
+      "title": "Purchased new generating plant",
+      "description": "purchased new generating plant from DMG power",
+      "type": "debit",
+      "amount": 4500,
+      "currency": "EUR",
+      "date": "4/07/2022"
+    },
+    {
+      "id": 14,
+      "status": "sucessful",
+      "title": "Sold landed property",
+      "description": "Received payment landed property sold to Landmark motors",
+      "type": "credit",
+      "amount": 5000000,
+      "currency": "NGN",
+      "date": "4/07/2022"
+    },
+    {
+      "id": 15,
+      "status": "pending",
+      "title": "AWS services",
+      "description": "Monthly payment for AWS service",
+      "type": "cash",
+      "amount": 900,
+      "currency": "EUR",
+      "date": "4/07/2022"
+    },
+    {
+      "id": 16,
+      "status": "pending",
+      "title": "Ink purchase",
+      "description": "Purchase of printer ink for deskjet printer",
+      "type": "credit",
+      "amount": 24000,
+      "currency": "NGN",
+      "date": "4/07/2022"
+    },
+    {
+      "id": 17,
+      "status": "sucessful",
+      "title": "Air condition servicing",
+      "description": "Payment for maintainance of air condition and refrigeration systems",
+      "type": "cash",
+      "amount": 45000,
+      "currency": "NGN",
+      "date": "5/07/2022"
+    },
+    {
+      "id": 18,
+      "status": "sucessful",
+      "title": "Domestic expenses",
+      "description": "Purchase for domestic tools",
+      "type": "debit",
+      "amount": 7000,
+      "currency": "NGN",
+      "date": "5/07/2022"
+    },
+    {
+      "id": 19,
+      "status": "failed",
+      "title": "School bus maintainance",
+      "description": "Charge for monthly school bus maintainance",
+      "type": "debit",
+      "amount": 15000,
+      "currency": "NGN",
+      "date": "5/07/2022" 
+    },
+    {
+      "id": 20,
+      "status": "sucessful",
+      "title": "Received payment for loans due",
+      "description": "Received payment for due loans lent to partners",
+      "type": "credit",
+      "amount": 5000,
+      "currency": "EUR",
+      "date": "5/07/2022"
     }
+    
   ]
 }

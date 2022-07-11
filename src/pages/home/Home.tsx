@@ -4,6 +4,8 @@ import { Transactions_Query } from '../../graphql/queries'
 import { TTransaction, TSortedTransaction } from '../../types'
 import React, { useEffect, useState } from 'react';
 
+
+
 export default function Home(): JSX.Element{
   const { data, loading, error } = useQuery(Transactions_Query)
 
@@ -19,54 +21,61 @@ export default function Home(): JSX.Element{
         return ac;
         },{})
         res = Object.entries(res).map(([k,v]) => ({[k]:v}))
-        // console.log(res)
         setGroupedTransactions(res);
     }
   }, [data])
-  // console.log(groupedTransaction[0][Object.keys(groupedTransaction)])
+
   groupedTransaction.forEach((entity: any)=>{
     const values  = Object.values(entity)["0"] as {}[]
-    // console.log( JSON.stringify(Object.values(values)[0]))
     Object.values(values).forEach((value: any)=>{
       console.log(value)
     })
-    // let hello;
-    // hello = Object.values(entity)[0]
-    // hello.forEach((some)=>{
-
-    // })
   })
 
   return(
     <main className="page">
       <div className="page__container">
+
+        {/*===================*/}
+        {/* Searchbar Section */}
+        {/*===================*/}
         <form action="" className="page__search-form">
           <input type="text" />
           <button type="submit" >Search</button>
         </form>
 
+
+        {/*================*/}
+        {/* Filter Section */}
+        {/*================*/}
+        div.
+
+
+        {/*=========================*/}
+        {/* Transactin Data Section */}
+        {/*=========================*/}
         <section className="data">
           {
-            // data && data.allTransactions.map((transaction: TTransaction, index: number)=>(
             groupedTransaction && groupedTransaction.map((transaction: any, index: number)=>(      
-              <div>
+              <div key={index} >
                 <h2 className="data-daily__date" >{Object.keys(transaction)}</h2>
-                  {
-                    Object.values(Object.values(transaction)[0] as {}[]).map((entity: any)=>(
-                      // <h1>{entity.title}</h1>
-                      <div className="data-daily__content">
-                        <div className="data-daily__content-id">
-
-                        </div>
-                        <div className="data-daily__content-data">
-                          <h3>{entity.title}</h3>
-                          <h4>{entity.status}</h4>
-                          <h4>{entity.type}</h4>
-                          <h4>{entity.description}</h4>
-                       </div>
+                {
+                  Object.values(Object.values(transaction)[0] as {}[]).map((entity:any, innerIndex: number)=>(
+                    <div key={innerIndex} className="data-daily__content">
+                      <div className="data-daily__content-id">
+                        <h2>{(innerIndex + 1)}</h2>
                       </div>
-                    ))
-                  }
+                      <div className="data-daily__content-data">
+                        <h3><span>Title</span> - {entity.title}</h3>
+                        <h4><span>Description</span> - {entity.description}</h4>
+                        <h4><span>Amount</span> - {entity.amount}</h4>
+                        <h4><span>Currency</span> - {entity.currency}</h4>
+                        <h4><span>Status</span> - {entity.status}</h4>
+                        <h4><span>Transaction type</span> - {entity.type}</h4>                    
+                      </div>
+                    </div>
+                  ))
+                }
               </div>
             // <div className="data-daily" key={index} >
             //   <h2 className="data-daily__date">{transaction.date}</h2>

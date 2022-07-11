@@ -7,6 +7,8 @@ export const Transactions_Query = gql`
       title
       description
       type
+      amount
+      currency
       date
     }
   }
