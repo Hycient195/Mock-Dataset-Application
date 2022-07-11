@@ -1,6 +1,6 @@
 import './Home.css';
 import { useQuery, useLazyQuery, gql } from "@apollo/client"
-import { Transactions_Query, Filter_Query } from '../../graphql/queries'
+import { Transactions_Query } from '../../graphql/queries'
 import { TTransaction, TSortedTransaction, IFilter } from '../../types'
 import { filters } from '../../constants'
 import React, { useEffect, useState } from 'react';
@@ -47,7 +47,8 @@ export default function Home(): JSX.Element{
     crieteria: "type",
     value: "credit"
   })
-  const Filter_Query = gql`
+
+  let Filter_Query = gql`
   query {
     allTransactions(filter: {
         ${filter.crieteria}: "${filter.value}"
@@ -63,47 +64,39 @@ export default function Home(): JSX.Element{
   }
   `
   const [ getSortedData, {loading: loadingState, data: actualData} ] = useLazyQuery(Filter_Query)
+
+  if(actualData && actualData.allTransactions){
+
+    setTimeout(() => {
+      let res = actualData.allTransactions.reduce((ac:any,a:any) => {
+        let key = a.date.split('/');
+        key = `${key[0]}-${key[1]}-${key[2]}`;
+        ac[key] = (ac[key] || []).concat(a);
+        return ac;
+        },{})
+        res = Object.entries(res).map(([k,v]) => ({[k]:v}))
+        setGroupedTransactions(res);
+    }, 50);
+  }
   
+
   const handleFilter = (receivedFilter: IFilter):void =>{
-    
+   
+    console.log(receivedFilter)
     
     setFilter({ crieteria: receivedFilter.parameter.toLowerCase(), value: receivedFilter.value})
     
     getSortedData();
+
     console.log(filter);
     console.log(actualData)
 
-    let res = actualData.allTransactions.reduce((ac:any,a:any) => {
-      let key = a.date.split('/');
-      key = `${key[0]}-${key[1]}-${key[2]}`;
-      ac[key] = (ac[key] || []).concat(a);
-      return ac;
-      },{})
-      res = Object.entries(res).map(([k,v]) => ({[k]:v}))
-      setGroupedTransactions(res);
     
-  //   const Filter_Query = gql`
-  //   {
-  //     query {
-  //       allTransactions(filter: {
-  //           ${filter.parameter}: "${filter.value}"
-  //       }) {
-  //         status
-  //         title
-  //         description
-  //         type
-  //         amount
-  //         currency
-  //         date
-  //       }
-  //     }
-  //   }
-  // `
-    // const [executeMyQuery, { data: queryData, loading, error }] = useLazyQuery(Filter_Query);
-    // const data = queryData;
-    // console.log(data);
+    
+  
   }
-
+ 
+ 
   return(
     <main className="page">
       <div className="page__container">
@@ -162,79 +155,8 @@ export default function Home(): JSX.Element{
                   ))
                 }
               </div>
-            // <div className="data-daily" key={index} >
-            //   <h2 className="data-daily__date">{transaction.date}</h2>
-
-            //   <div className="data-daily__content">
-            //     <div className="data-daily__content-id">
-
-            //     </div>
-            //     <div className="data-daily__content-data">
-            //       <h3>{transaction.title}</h3>
-            //       <h4>{transaction.status}</h4>
-            //       <h4>{transaction.type}</h4>
-            //       <h4>{transaction.description}</h4>
-            //     </div>
-            //   </div>
-
-            //   <div className="data-daily__content">
-            //     <div className="data-daily__content-id">
-
-            //     </div>
-            //     <div className="data-daily__content-data">
-
-            //     </div>
-            //   </div>
-            // </div>
             ))
           }
-          {/* <div className="data-daily">
-            <h2 className="data-daily__date">12/12/2022</h2>
-
-            <div className="data-daily__content">
-              <div className="data-daily__content-id">
-
-              </div>
-              <div className="data-daily__content-data">
-
-              </div>
-            </div>
-
-            <div className="data-daily__content">
-              <div className="data-daily__content-id">
-
-              </div>
-              <div className="data-daily__content-data">
-
-              </div>
-            </div>
-          </div>
-
-          <div className="data-daily">
-            <h2 className="data-daily__date">12/12/2022</h2>
-
-            <div className="data-daily__content">
-              <div className="data-daily__content-id">
-
-              </div>
-              <div className="data-daily__content-data">
-
-              </div>
-            </div>
-          </div>
-
-          <div className="data-daily">
-            <h2 className="data-daily__date">12/12/2022</h2>
-
-            <div className="data-daily__content">
-              <div className="data-daily__content-id">
-
-              </div>
-              <div className="data-daily__content-data">
-
-              </div>
-            </div>
-          </div> */}
         </section>
       </div>
     </main>

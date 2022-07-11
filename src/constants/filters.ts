@@ -1,5 +1,6 @@
 import { IFilter } from '../types'
 
+
 export const filters: IFilter[] = [
   {
     parameter: "Currency",

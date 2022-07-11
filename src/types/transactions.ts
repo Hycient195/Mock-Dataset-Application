@@ -9,6 +9,7 @@ export type TTransaction = {
     date: string
 }
 
+
 export type TSortedTransaction = {
   date: string,
   data: TTransaction
