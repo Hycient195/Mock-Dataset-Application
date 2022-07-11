@@ -13,3 +13,21 @@ export const Transactions_Query = gql`
     }
   }
 `
+
+export const Filter_Query = (criteria: string, value: string) => gql`
+  {
+    query {
+      allTransactions(filter: {
+          ${criteria}: "${value}"
+      }) {
+        status
+        title
+        description
+        type
+        amount
+        currency
+        date
+      }
+    }
+  }
+`

@@ -27,6 +27,29 @@ div.page__container > form.page__search-form > *{
 
 
 
+/*================*/
+/* Filter Section */
+/*================*/
+div.filter-section__filter-container{
+  overflow-x: scroll;
+}
+
+div.filter-section__filter-row{
+  width: max-content;
+  display: flex;
+  gap: 1em;
+  padding: 1em;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+div.filter-section__filter-item{
+  padding: 0 1em;
+  cursor: pointer;
+}
+
+
+
 /*==============*/
 /* Data Section */
 /*==============*/

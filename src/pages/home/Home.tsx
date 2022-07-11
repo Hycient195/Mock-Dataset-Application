@@ -1,13 +1,16 @@
 import './Home.css';
-import { useQuery } from "@apollo/client"
-import { Transactions_Query } from '../../graphql/queries'
-import { TTransaction, TSortedTransaction } from '../../types'
+import { useQuery, useLazyQuery, gql } from "@apollo/client"
+import { Transactions_Query, Filter_Query } from '../../graphql/queries'
+import { TTransaction, TSortedTransaction, IFilter } from '../../types'
+import { filters } from '../../constants'
 import React, { useEffect, useState } from 'react';
+import { stringify } from 'querystring';
 
 
 
 export default function Home(): JSX.Element{
   const { data, loading, error } = useQuery(Transactions_Query)
+  
 
 
   const [ groupedTransaction, setGroupedTransactions ] = useState([{date: '', data: []}])
@@ -28,9 +31,78 @@ export default function Home(): JSX.Element{
   groupedTransaction.forEach((entity: any)=>{
     const values  = Object.values(entity)["0"] as {}[]
     Object.values(values).forEach((value: any)=>{
-      console.log(value)
+      // console.log(value)
     })
   })
+
+
+  /*====================================================*/
+  /*=============================*/
+  /* Handler For Pupular Filters */
+  /*=============================*/
+  const [ filter, setFilter ] = useState<{
+    crieteria: string,
+    value: string
+  }>({
+    crieteria: "type",
+    value: "credit"
+  })
+  const Filter_Query = gql`
+  query {
+    allTransactions(filter: {
+        ${filter.crieteria}: "${filter.value}"
+    }) {
+      status
+      title
+      description
+      type
+      amount
+      currency
+      date
+    }
+  }
+  `
+  const [ getSortedData, {loading: loadingState, data: actualData} ] = useLazyQuery(Filter_Query)
+  
+  const handleFilter = (receivedFilter: IFilter):void =>{
+    
+    
+    setFilter({ crieteria: receivedFilter.parameter.toLowerCase(), value: receivedFilter.value})
+    
+    getSortedData();
+    console.log(filter);
+    console.log(actualData)
+
+    let res = actualData.allTransactions.reduce((ac:any,a:any) => {
+      let key = a.date.split('/');
+      key = `${key[0]}-${key[1]}-${key[2]}`;
+      ac[key] = (ac[key] || []).concat(a);
+      return ac;
+      },{})
+      res = Object.entries(res).map(([k,v]) => ({[k]:v}))
+      setGroupedTransactions(res);
+    
+  //   const Filter_Query = gql`
+  //   {
+  //     query {
+  //       allTransactions(filter: {
+  //           ${filter.parameter}: "${filter.value}"
+  //       }) {
+  //         status
+  //         title
+  //         description
+  //         type
+  //         amount
+  //         currency
+  //         date
+  //       }
+  //     }
+  //   }
+  // `
+    // const [executeMyQuery, { data: queryData, loading, error }] = useLazyQuery(Filter_Query);
+    // const data = queryData;
+    // console.log(data);
+  }
 
   return(
     <main className="page">
@@ -48,7 +120,20 @@ export default function Home(): JSX.Element{
         {/*================*/}
         {/* Filter Section */}
         {/*================*/}
-        div.
+        <section className="filter-section">
+          <h2 className="centralize" >Popular Filters</h2>
+          <div className="filter-section__filter-container">
+            <div className="filter-section__filter-row">
+            {
+              filters.map((filter: IFilter, index: number)=>(
+                <div key={index} onClick={()=>handleFilter(filter)} className="filter-section__filter-item">
+                  <h3><span>{filter.parameter}</span>: <span>{filter.value}</span></h3>
+                </div>
+              ))
+            }
+            </div> 
+          </div>
+        </section>
 
 
         {/*=========================*/}

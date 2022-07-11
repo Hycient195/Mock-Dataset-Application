@@ -5,7 +5,7 @@
       "status": "pending",
       "title": "AWS services",
       "description": "Monthly payment for AWS service",
-      "type": "cash",
+      "type": "debit",
       "amount": 1000,
       "currency": "USD",
       "date": "1/07/2022"
