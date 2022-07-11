@@ -65,20 +65,7 @@ export default function Home(): JSX.Element{
   `
   const [ getSortedData, {loading: loadingState, data: actualData} ] = useLazyQuery(Filter_Query)
 
-  if(actualData && actualData.allTransactions){
 
-    setTimeout(() => {
-      let res = actualData.allTransactions.reduce((ac:any,a:any) => {
-        let key = a.date.split('/');
-        key = `${key[0]}-${key[1]}-${key[2]}`;
-        ac[key] = (ac[key] || []).concat(a);
-        return ac;
-        },{})
-        res = Object.entries(res).map(([k,v]) => ({[k]:v}))
-        setGroupedTransactions(res);
-    }, 50);
-  }
-  
 
   const handleFilter = (receivedFilter: IFilter):void =>{
    
@@ -91,7 +78,21 @@ export default function Home(): JSX.Element{
     console.log(filter);
     console.log(actualData)
 
-    
+    if(actualData && actualData.allTransactions){
+
+      setTimeout(() => {
+        let res = actualData.allTransactions.reduce((ac:any,a:any) => {
+          let key = a.date.split('/');
+          key = `${key[0]}-${key[1]}-${key[2]}`;
+          ac[key] = (ac[key] || []).concat(a);
+          return ac;
+          },{})
+          res = Object.entries(res).map(([k,v]) => ({[k]:v}))
+          setGroupedTransactions(res);
+         
+      }, 10);
+      console.log("i'm running")
+    }
     
   
   }
