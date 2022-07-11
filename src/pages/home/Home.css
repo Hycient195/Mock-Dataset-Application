@@ -35,7 +35,7 @@ div.data-daily{
   gap: 2em;
 }
 div.data-daily__content{
-  height: 100px;
+  /* height: 100px; */
   display: grid;
   grid-template-columns: 100px 1fr;
   gap: 2em;
