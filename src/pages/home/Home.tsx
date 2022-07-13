@@ -3,8 +3,7 @@ import { useQuery, useLazyQuery, gql } from "@apollo/client"
 import { Transactions_Query } from '../../graphql/queries'
 import { TTransaction, TSortedTransaction, IFilter } from '../../types'
 import { filters } from '../../constants'
-import React, { useEffect, useState } from 'react';
-import { stringify } from 'querystring';
+import { useEffect, useState } from 'react';
 
 
 

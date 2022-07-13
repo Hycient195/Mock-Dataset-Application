@@ -1,0 +1,1 @@
+json-graphql-server graphql-server.json --p 5000
