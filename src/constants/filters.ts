@@ -21,5 +21,9 @@ export const filters: IFilter[] = [
   {
     parameter: "Type",
     value: "debit"
+  },
+  {
+    parameter: "Currency",
+    value: "NGN"
   }
 ]

@@ -101,6 +101,7 @@ export default function Home(): JSX.Element{
     <main className="page">
       <div className="page__container">
 
+        <h1 className='centralize' >Mock Dataset Application</h1>
         {/*===================*/}
         {/* Searchbar Section */}
         {/*===================*/}
@@ -135,8 +136,8 @@ export default function Home(): JSX.Element{
         <section className="data">
           {
             groupedTransaction && groupedTransaction.map((transaction: any, index: number)=>(      
-              <div key={index} >
-                <h2 className="data-daily__date" >{Object.keys(transaction)}</h2>
+              <div key={index} className="data-daily__grouped" >
+                <h2 className="data-daily__date strip-margin" >Date: {Object.keys(transaction)}</h2>
                 {
                   Object.values(Object.values(transaction)[0] as {}[]).map((entity:any, innerIndex: number)=>(
                     <div key={innerIndex} className="data-daily__content">

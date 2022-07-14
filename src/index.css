@@ -10,6 +10,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 2em;
+  background-color: whitesmoke;
 }
 
 code {
@@ -22,4 +23,19 @@ code {
 /* Utility Classes */
 .centralize{
   text-align: center;
+}
+
+
+:root{
+  --base-border-radius: 10px;
+  --base-gap: 1em;
+  --base-margin: 1em;
+  --base-padding: 1em;
+}
+
+
+@media screen and (max-width: 750px) {
+  body{
+    padding: 1.5em;
+  }
 }
